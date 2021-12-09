@@ -298,7 +298,7 @@ export default class WeekView extends Component {
   ) => {
     const initialDates = [];
     const centralDate = moment(currentMoment);
-    if (numberOfDays === 7 || fixedHorizontally) {
+    if (numberOfDays === 7 || (fixedHorizontally && numberOfDays > 1)) {
       centralDate.subtract(
         // Ensure centralDate is before currentMoment
         (centralDate.day() + 7 - weekStartsOn) % 7,
@@ -390,6 +390,7 @@ export default class WeekView extends Component {
       onDragEvent,
       isRefreshing,
       RefreshComponent,
+      navigation,
     } = this.props;
     const { currentMoment, initialDates } = this.state;
     const times = this.calculateTimes(timeStep, formatTimeLabel);
@@ -407,6 +408,7 @@ export default class WeekView extends Component {
             textStyle={headerTextStyle}
             numberOfDays={numberOfDays}
             selectedDate={currentMoment}
+            navigation={navigation}
           />
           <VirtualizedList
             horizontal
