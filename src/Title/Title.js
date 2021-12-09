@@ -1,5 +1,8 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import PropTypes from 'prop-types';
 
 import { getCurrentMonth, availableNumberOfDays } from '../utils';
@@ -12,7 +15,7 @@ const getFontSizeHeader = (numberOfDays) => {
   return 16;
 };
 
-const Title = ({ style, showTitle, numberOfDays, selectedDate, textStyle }) => {
+const Title = ({ style, showTitle, numberOfDays, selectedDate, textStyle, navigation }) => { //({ style, showTitle, numberOfDays, selectedDate, textStyle }) => {
   return (
     <View style={[styles.title, style]}>
       {showTitle ? (
@@ -25,7 +28,21 @@ const Title = ({ style, showTitle, numberOfDays, selectedDate, textStyle }) => {
             textStyle,
           ]}
         >
-          {getCurrentMonth(selectedDate)}
+          <TouchableOpacity
+            style={{
+                borderWidth: 2,
+                borderColor:'rgba(255,255,255,0.5)',
+                alignItems:'center',
+                justifyContent:'center',
+                width:40,
+                height:40,
+                backgroundColor:'#00f',
+                borderRadius:20,
+            }}
+            onPress={()=>{navigation.popToTop()}}
+          >
+            <Icon name="arrow-left" size={15} color="#fff" /> 
+          </TouchableOpacity>
         </Text>
       ) : null}
     </View>
