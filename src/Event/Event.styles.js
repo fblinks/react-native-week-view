@@ -11,9 +11,11 @@ const styles = StyleSheet.create({
   touchableContainer: {
     flex: 1,
     alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   description: {
-    marginVertical: 8,
+    marginVertical: 0,
     marginHorizontal: 2,
     color: '#fff',
     textAlign: 'center',
