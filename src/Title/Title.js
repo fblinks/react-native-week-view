@@ -15,7 +15,7 @@ const getFontSizeHeader = (numberOfDays) => {
   return 16;
 };
 
-const Title = ({ style, showTitle, numberOfDays, selectedDate, textStyle, navigation }) => { //({ style, showTitle, numberOfDays, selectedDate, textStyle }) => {
+const Title = ({ style, showTitle, numberOfDays, selectedDate, textStyle, navigation, timeoutId }) => { //({ style, showTitle, numberOfDays, selectedDate, textStyle }) => {
   return (
     <View style={[styles.title, style]}>
       {showTitle ? (
@@ -39,7 +39,14 @@ const Title = ({ style, showTitle, numberOfDays, selectedDate, textStyle, naviga
                 backgroundColor:'#00f',
                 borderRadius:20,
             }}
-            onPress={()=>{navigation.popToTop()}}
+            onPress={
+              () => {
+                if (timeoutId) {
+                  clearTimeout(timeoutId)
+                }
+                navigation.popToTop()
+              }
+            }
           >
             <Icon name="arrow-left" size={15} color="#fff" /> 
           </TouchableOpacity>
