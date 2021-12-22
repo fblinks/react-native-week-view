@@ -391,6 +391,7 @@ export default class WeekView extends Component {
       isRefreshing,
       RefreshComponent,
       navigation,
+      timeoutId,
     } = this.props;
     const { currentMoment, initialDates } = this.state;
     const times = this.calculateTimes(timeStep, formatTimeLabel);
@@ -409,6 +410,7 @@ export default class WeekView extends Component {
             numberOfDays={numberOfDays}
             selectedDate={currentMoment}
             navigation={navigation}
+            timeoutId={timeoutId}
           />
           <VirtualizedList
             horizontal
